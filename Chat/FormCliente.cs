@@ -17,6 +17,7 @@ namespace Chat
         {
             InitializeComponent();
             client = new WebSocketClientManager();
+            client.OnMessageReceived += ClientManager_OnMessageReceived;
 
             client.Connect("ws://127.0.0.1:8181");
         }
