@@ -23,18 +23,16 @@ namespace Chat
             client = new WebSocketClientManager();
             client.OnMessageReceived += ClientManager_OnMessageReceived;
 
-            client.Connect("ws://172.20.10.2:8181");
+            client.Connect("ws://192.168.1.8:8181");
         }
         private void ClientManager_OnMessageReceived(string message)
         {
             if (InvokeRequired)
             {
                 Invoke(new Action(() => ClientManager_OnMessageReceived(message)));
+                
                 return;
             }
-            MessageBox.Show(message);
-
-
         }
         public FormStoresModificar(int id, string nombre, string direccion, string ciudad, string estado, string cp)//actualizar
         {
@@ -84,37 +82,35 @@ namespace Chat
                     if (!string.IsNullOrEmpty(mensaje))
                     {
                         client.SendMessage(mensaje);
-                      
-
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("NO SE ACTUALIZO LA TIENDA");
                 }
-                
-
-
             }
             else
             {
-                string sql = "INSERT INTO Stores (stor_id, stor_name, stor_address, city, state, zip) " +
+                try
+                {
+                    string sql = "INSERT INTO Stores (stor_id, stor_name, stor_address, city, state, zip) " +
               "VALUES (" + textBoxID.Text + ", '" + textBoxNOMBRE.Text + "', '" + textBoxDIRECCION.Text +
               "', '" + textBoxCIUDAD.Text + "', '" + textBoxESTADO.Text + "', '" + textBoxCP.Text + "')";
 
-                dt.ejecutarComando(sql);
-                
-                MessageBox.Show("TIENDA AGREGADA");
+                    dt.ejecutarComando(sql);
 
-                string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
-                if (!string.IsNullOrEmpty(mensaje))
-                {
-                    client.SendMessage(mensaje);
-                   
+                    MessageBox.Show("TIENDA AGREGADA");
 
+                    string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
+                    if (!string.IsNullOrEmpty(mensaje))
+                    {
+                        client.SendMessage(mensaje);
+                    }
                 }
-
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show("NO SE PUDO INSERTAR EL NUEVO REGISTRO");
+                }
             }
          
         }

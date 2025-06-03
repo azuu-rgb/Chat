@@ -19,22 +19,10 @@ namespace Chat
         {
             InitializeComponent();
             dt = new ClassDatos();
-            client = new WebSocketClientManager();
-            client.OnMessageReceived += ClientManager_OnMessageReceived;
 
-            client.Connect("ws://127.0.0.1:8181");
 
         }
-        private void ClientManager_OnMessageReceived(string message)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => ClientManager_OnMessageReceived(message)));
-                return;
-            }
 
-           
-        }
         private void actualizar()
         {
             DataSet ds;
@@ -80,9 +68,53 @@ namespace Chat
             frmStoreUnico.FormClosed += (s, args) =>
             {
                 actualizar(); // Por si quieres mostrar el cambio inmediato también
-                
+
             };
             frmStoreUnico.Show();
+        }
+
+        private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int i = dataGridView1.CurrentRow.Index;
+            FormStoresModificar tienda = new FormStoresModificar(Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value),
+                dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                dataGridView1.Rows[i].Cells[2].Value.ToString(),
+                dataGridView1.Rows[i].Cells[3].Value.ToString(),
+                dataGridView1.Rows[i].Cells[4].Value.ToString(),
+                dataGridView1.Rows[i].Cells[5].Value.ToString()
+                );
+            tienda.Show();
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int i = dataGridView1.CurrentRow.Index;
+            DialogResult f = MessageBox.Show("¿ELIMINAR TIENDA?" + dataGridView1.Rows[i].Cells[0].Value, "ELIMINAR", MessageBoxButtons.YesNo);
+            if (f == DialogResult.Yes)
+            {
+                if (dt.ejecutarComando("DELETE FROM Stores WHERE stor_id = " + dataGridView1.Rows[i].Cells[0].Value) == true)
+                {
+                    MessageBox.Show("Tienda Eliminada", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    actualizar();
+                    string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
+                    if (!string.IsNullOrEmpty(mensaje))
+                    {
+                        client.SendMessage(mensaje);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar tienda", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    actualizar();
+                }
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("NO SE ELIMINO NINGUNA TIENDA");
+            }
         }
     }
 }
