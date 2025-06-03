@@ -31,12 +31,12 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStoresTabla));
             dataGridView1 = new DataGridView();
-            label1 = new Label();
-            textBoxBusqueda = new TextBox();
-            buttonInsertar = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
             actualizarToolStripMenuItem = new ToolStripMenuItem();
             eliminarToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
+            textBoxBusqueda = new TextBox();
+            buttonInsertar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
@@ -50,6 +50,27 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(802, 309);
             dataGridView1.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { actualizarToolStripMenuItem, eliminarToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(161, 68);
+            // 
+            // actualizarToolStripMenuItem
+            // 
+            actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
+            actualizarToolStripMenuItem.Size = new Size(160, 32);
+            actualizarToolStripMenuItem.Text = "Actualizar";
+            actualizarToolStripMenuItem.Click += actualizarToolStripMenuItem_Click;
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            eliminarToolStripMenuItem.Size = new Size(160, 32);
+            eliminarToolStripMenuItem.Text = "Eliminar";
+            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
             // label1
             // 
@@ -79,27 +100,6 @@
             buttonInsertar.UseVisualStyleBackColor = true;
             buttonInsertar.Click += buttonInsertar_Click;
             // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.ImageScalingSize = new Size(24, 24);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { actualizarToolStripMenuItem, eliminarToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(161, 68);
-            // 
-            // actualizarToolStripMenuItem
-            // 
-            actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            actualizarToolStripMenuItem.Size = new Size(160, 32);
-            actualizarToolStripMenuItem.Text = "Actualizar";
-            actualizarToolStripMenuItem.Click += actualizarToolStripMenuItem_Click;
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            eliminarToolStripMenuItem.Size = new Size(160, 32);
-            eliminarToolStripMenuItem.Text = "Eliminar";
-            eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
-            // 
             // FormStoresTabla
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -112,6 +112,7 @@
             Controls.Add(dataGridView1);
             Name = "FormStoresTabla";
             Text = "FormStoresTabla";
+            Activated += FormStoresTabla_Activated;
             Load += FormStoresTabla_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             contextMenuStrip1.ResumeLayout(false);

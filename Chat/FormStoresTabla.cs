@@ -14,18 +14,21 @@ namespace Chat
     public partial class FormStoresTabla : Form
     {
         ClassDatos dt;
-        
-        private  WebSocketClientManager client;
+
+        private WebSocketClientManager client;
         public FormStoresTabla()
         {
             InitializeComponent();
             dt = new ClassDatos();
             client = new WebSocketClientManager();
-            client.OnMessageReceived += ClientManager_OnMessageReceived;
-
-            client.Connect("ws://172.20.10.5:8181");
+            int contador = 0;
+            
+            client.OnMessageReceived = ClientManager_OnMessageReceived;
+            
+            client.Connect("ws://10.19.95.206:8181");
 
         }
+        
         private void ClientManager_OnMessageReceived(string message)
         {
             if (InvokeRequired)
@@ -34,8 +37,9 @@ namespace Chat
 
                 return;
             }
-            FormStoresTabla froma = new FormStoresTabla();
-            froma.actualizar();
+
+            MessageBox.Show(message);    
+            
         }
         public void actualizar()
         {
@@ -78,7 +82,7 @@ namespace Chat
 
         private void buttonInsertar_Click(object sender, EventArgs e)
         {
-            FormStoresModificar frmStoreUnico = new FormStoresModificar();
+            FormStoresModificar frmStoreUnico = new FormStoresModificar(client);
             frmStoreUnico.FormClosed += (s, args) =>
             {
                 actualizar(); // Por si quieres mostrar el cambio inmediato también
@@ -90,7 +94,9 @@ namespace Chat
         private void actualizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int i = dataGridView1.CurrentRow.Index;
-            FormStoresModificar tienda = new FormStoresModificar(Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value),
+            FormStoresModificar tienda = new FormStoresModificar(
+                client,
+                Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value),
                 dataGridView1.Rows[i].Cells[1].Value.ToString(),
                 dataGridView1.Rows[i].Cells[2].Value.ToString(),
                 dataGridView1.Rows[i].Cells[3].Value.ToString(),
@@ -130,6 +136,11 @@ namespace Chat
             {
                 MessageBox.Show("NO SE ELIMINO NINGUNA TIENDA");
             }
+        }
+
+        private void FormStoresTabla_Activated(object sender, EventArgs e)
+        {
+            actualizar();
         }
     }
 }

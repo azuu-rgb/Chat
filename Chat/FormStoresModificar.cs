@@ -14,16 +14,17 @@ namespace Chat
 {
     public partial class FormStoresModificar : Form
     {
-        private static WebSocketClientManager client;
+        WebSocketClientManager client;
         bool bandera = false;
         int id = 0;
-        public FormStoresModificar()
+        public FormStoresModificar(WebSocketClientManager client)
         {
             InitializeComponent();
-            client = new WebSocketClientManager();
-            client.OnMessageReceived += ClientManager_OnMessageReceived;
+            this.client = client;
+            //client = new WebSocketClientManager();
+            //client.OnMessageReceived += ClientManager_OnMessageReceived;
 
-            client.Connect("ws://172.20.10.5:8181");
+            //client.Connect("ws://172.20.10.5:8181");
         }
 
         private void ClientManager_OnMessageReceived(string message)
@@ -37,9 +38,10 @@ namespace Chat
             FormStoresTabla froma =new FormStoresTabla();
             froma.actualizar();
         }
-        public FormStoresModificar(int id, string nombre, string direccion, string ciudad, string estado, string cp)//actualizar
+        public FormStoresModificar(WebSocketClientManager client, int id, string nombre, string direccion, string ciudad, string estado, string cp)//actualizar
         {
             InitializeComponent();
+            this.client = client;
             this.id = id;
             textBoxID.Text = id.ToString();
             textBoxID.ReadOnly = true;
@@ -69,16 +71,17 @@ namespace Chat
             if (bandera)
             {
 
-                string sql = "UPDATE Stores SET " +
-                    "stor_name = '" + textBoxNOMBRE.Text + "', " +
-                    "stor_address = '" + textBoxDIRECCION.Text + "', " +
-                    "city = '" + textBoxCIUDAD.Text + "', " +
-                    "state = '" + textBoxESTADO.Text + "', " +
-                    "zip = '" + textBoxCP.Text + "' " +
-                    "WHERE stor_id = " + id;
-                dt.ejecutarComando(sql);
+               
                 try
                 {
+                    string sql = "UPDATE Stores SET " +
+                   "stor_name = '" + textBoxNOMBRE.Text + "', " +
+                   "stor_address = '" + textBoxDIRECCION.Text + "', " +
+                   "city = '" + textBoxCIUDAD.Text + "', " +
+                   "state = '" + textBoxESTADO.Text + "', " +
+                   "zip = '" + textBoxCP.Text + "' " +
+                   "WHERE stor_id = " + id;
+                    dt.ejecutarComando(sql);
                     MessageBox.Show("TIENDA ACTUALIZADA");
 
                     string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
@@ -89,7 +92,7 @@ namespace Chat
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("NO SE ACTUALIZO LA TIENDA");
+                    MessageBox.Show("NO SE ACTUALIZO LA TIENDA"+ex.Message);
                 }
             }
             else
@@ -115,6 +118,7 @@ namespace Chat
                     MessageBox.Show("NO SE PUDO INSERTAR EL NUEVO REGISTRO");
                 }
             }
+            this.Close();
          
         }
 
