@@ -23,8 +23,9 @@ namespace Chat
             client = new WebSocketClientManager();
             client.OnMessageReceived += ClientManager_OnMessageReceived;
 
-            client.Connect("ws://192.168.1.8:8181");
+            client.Connect("ws://172.20.10.5:8181");
         }
+
         private void ClientManager_OnMessageReceived(string message)
         {
             if (InvokeRequired)
@@ -33,6 +34,8 @@ namespace Chat
                 
                 return;
             }
+            FormStoresTabla froma =new FormStoresTabla();
+            froma.actualizar();
         }
         public FormStoresModificar(int id, string nombre, string direccion, string ciudad, string estado, string cp)//actualizar
         {

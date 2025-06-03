@@ -14,16 +14,30 @@ namespace Chat
     public partial class FormStoresTabla : Form
     {
         ClassDatos dt;
-        WebSocketClientManager client;
+        
+        private  WebSocketClientManager client;
         public FormStoresTabla()
         {
             InitializeComponent();
             dt = new ClassDatos();
+            client = new WebSocketClientManager();
+            client.OnMessageReceived += ClientManager_OnMessageReceived;
 
+            client.Connect("ws://172.20.10.5:8181");
 
         }
+        private void ClientManager_OnMessageReceived(string message)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => ClientManager_OnMessageReceived(message)));
 
-        private void actualizar()
+                return;
+            }
+            FormStoresTabla froma = new FormStoresTabla();
+            froma.actualizar();
+        }
+        public void actualizar()
         {
             DataSet ds;
             ds = dt.consulta("SELECT stor_id AS [NO. TIENDA], " +
@@ -96,6 +110,7 @@ namespace Chat
                 {
                     MessageBox.Show("Tienda Eliminada", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     actualizar();
+
                     string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
                     if (!string.IsNullOrEmpty(mensaje))
                     {

@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonInsertar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAA8xJREFUWEfdWEtPE1EYJdGd+DN8RI3+BDZCZ9oproyiRtiAS5SXC0zYWDqvkuii
+        DwAACw8BkvkDpQAAA8xJREFUWEfdWEtPE1EYJdGd+DN8RI3+BDZCZ9oproyiRtiAS5SXC0zYWDqvkuii
         xQRMYMkGEiEs5KUB5s6UhYEFCD5AAws2QmeoGkrGnCE28JXAHWgFOclJJvPd+92TmXu/xy0qOq0oi7Ib
         omLUS3pyUNLNRUFlGwHZyIB4lnTrK2wB2ajDWDq/IChXxs+LMmsKaeb38tiUXdO98PNZ/6qrjKbcl8Zv
         N57MeMQz3jX3r7o13Z/S5W1JO6ixb4LKGkpaRoup3yOjpGX0rCCzBlE17arXcxuR4TW3fWqLm4mpLTcy
@@ -140,7 +143,4 @@
         gKRbX7b30/YlOgpgvEPJhDFChF2h808N/gCFZ0lQp8Sq0QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

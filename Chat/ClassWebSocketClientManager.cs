@@ -6,7 +6,7 @@ public class WebSocketClientManager
 
     public Action<string> OnMessageReceived;
 
-    public void Connect(string url = "ws://192.168.1.8:8181")
+    public void Connect(string url = "ws://172.20.10.5:8181")
     {
         client = new WebSocketSharp.WebSocket(url);
 
