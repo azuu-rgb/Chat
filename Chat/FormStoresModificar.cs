@@ -21,23 +21,19 @@ namespace Chat
         {
             InitializeComponent();
             this.client = client;
-            //client = new WebSocketClientManager();
-            //client.OnMessageReceived += ClientManager_OnMessageReceived;
-
-            //client.Connect("ws://172.20.10.5:8181");
         }
 
-        private void ClientManager_OnMessageReceived(string message)
-        {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => ClientManager_OnMessageReceived(message)));
+        //private void ClientManager_OnMessageReceived(string message)
+        //{
+        //    if (InvokeRequired)
+        //    {
+        //        Invoke(new Action(() => ClientManager_OnMessageReceived(message)));
                 
-                return;
-            }
-            FormStoresTabla froma =new FormStoresTabla();
-            froma.actualizar();
-        }
+        //        return;
+        //    }
+        //    FormStoresTabla froma =new FormStoresTabla();
+        //    froma.actualizar();
+        //}
         public FormStoresModificar(WebSocketClientManager client, int id, string nombre, string direccion, string ciudad, string estado, string cp)//actualizar
         {
             InitializeComponent();

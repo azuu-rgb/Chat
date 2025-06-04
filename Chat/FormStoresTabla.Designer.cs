@@ -37,6 +37,8 @@
             label1 = new Label();
             textBoxBusqueda = new TextBox();
             buttonInsertar = new Button();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
@@ -45,10 +47,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.ContextMenuStrip = contextMenuStrip1;
-            dataGridView1.Location = new Point(-3, 140);
+            dataGridView1.Location = new Point(-3, 175);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(802, 309);
+            dataGridView1.Size = new Size(802, 274);
             dataGridView1.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -76,7 +78,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(27, 86);
+            label1.ForeColor = Color.MidnightBlue;
+            label1.Location = new Point(198, 110);
             label1.Name = "label1";
             label1.Size = new Size(112, 32);
             label1.TabIndex = 1;
@@ -84,21 +87,42 @@
             // 
             // textBoxBusqueda
             // 
-            textBoxBusqueda.Location = new Point(145, 86);
+            textBoxBusqueda.Location = new Point(326, 113);
             textBoxBusqueda.Name = "textBoxBusqueda";
-            textBoxBusqueda.Size = new Size(433, 31);
+            textBoxBusqueda.Size = new Size(358, 31);
             textBoxBusqueda.TabIndex = 2;
             textBoxBusqueda.TextChanged += textBoxBusqueda_TextChanged;
             // 
             // buttonInsertar
             // 
             buttonInsertar.Image = (Image)resources.GetObject("buttonInsertar.Image");
-            buttonInsertar.Location = new Point(680, 67);
+            buttonInsertar.Location = new Point(714, 91);
             buttonInsertar.Name = "buttonInsertar";
             buttonInsertar.Size = new Size(56, 51);
             buttonInsertar.TabIndex = 3;
             buttonInsertar.UseVisualStyleBackColor = true;
             buttonInsertar.Click += buttonInsertar_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Image = (Image)resources.GetObject("label2.Image");
+            label2.Location = new Point(-3, -3);
+            label2.Name = "label2";
+            label2.Size = new Size(202, 175);
+            label2.TabIndex = 4;
+            label2.Text = "                                      \r\n\r\n\r\n\r\n\r\n\r\n\r\n";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.MidnightBlue;
+            label3.Location = new Point(205, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(280, 65);
+            label3.TabIndex = 5;
+            label3.Text = "-Busqueda";
             // 
             // FormStoresTabla
             // 
@@ -106,12 +130,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(buttonInsertar);
             Controls.Add(textBoxBusqueda);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Name = "FormStoresTabla";
-            Text = "FormStoresTabla";
+            Text = "Tiendas";
             Activated += FormStoresTabla_Activated;
             Load += FormStoresTabla_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -129,5 +155,7 @@
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem actualizarToolStripMenuItem;
         private ToolStripMenuItem eliminarToolStripMenuItem;
+        private Label label2;
+        private Label label3;
     }
 }

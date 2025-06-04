@@ -37,7 +37,8 @@ namespace Chat
 
                 return;
             }
-
+          
+            actualizar();
             MessageBox.Show(message);    
             
         }
