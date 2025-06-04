@@ -2,30 +2,31 @@
 
 public class WebSocketClientManager
 {
-    private WebSocketSharp.WebSocket client;
+    private WebSocketSharp.WebSocket cliente;
 
-    public Action<string> OnMessageReceived;
+    public Action<string> AlRecibirMensaje; 
 
-    public void Connect(string url = "ws://10.19.95.206:8181")
+    public void Conectar(string url = "ws://192.168.33.183:8181")
     {
-        client = new WebSocketSharp.WebSocket(url);
+        cliente = new WebSocketSharp.WebSocket(url);
 
-        client.OnMessage += (sender, e) =>
+        cliente.OnMessage += (remitente, evento) =>
         {
-            OnMessageReceived?.Invoke(e.Data);
+           
+            AlRecibirMensaje.Invoke(evento.Data);
         };
 
-        client.Connect();
+        cliente.Connect(); 
     }
 
-    public void SendMessage(string message)
+    public void EnviarMensaje(string mensaje)
     {
-        client?.Send(message);
+        cliente.Send(mensaje); 
     }
 
-    public void Close()
+    public void Cerrar()
     {
-        client?.Close();
+        cliente.Close(); 
     }
 }
 

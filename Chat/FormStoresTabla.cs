@@ -15,25 +15,25 @@ namespace Chat
     {
         ClassDatos dt;
 
-        private WebSocketClientManager client;
+        private WebSocketClientManager cliente;
         public FormStoresTabla()
         {
             InitializeComponent();
             dt = new ClassDatos();
-            client = new WebSocketClientManager();
+            cliente = new WebSocketClientManager();
             int contador = 0;
             
-            client.OnMessageReceived = ClientManager_OnMessageReceived;
+            cliente.AlRecibirMensaje = Cliente_RecibeMensaje;
             
-            client.Connect("ws://10.19.95.206:8181");
+            cliente.Conectar("ws://192.168.33.183:8181");
 
         }
         
-        private void ClientManager_OnMessageReceived(string message)
+        private void Cliente_RecibeMensaje(string message)
         {
             if (InvokeRequired)
             {
-                Invoke(new Action(() => ClientManager_OnMessageReceived(message)));
+                Invoke(new Action(() => Cliente_RecibeMensaje(message)));
 
                 return;
             }
@@ -83,7 +83,7 @@ namespace Chat
 
         private void buttonInsertar_Click(object sender, EventArgs e)
         {
-            FormStoresModificar frmStoreUnico = new FormStoresModificar(client);
+            FormStoresModificar frmStoreUnico = new FormStoresModificar(cliente);
             frmStoreUnico.FormClosed += (s, args) =>
             {
                 actualizar(); // Por si quieres mostrar el cambio inmediato también
@@ -96,7 +96,7 @@ namespace Chat
         {
             int i = dataGridView1.CurrentRow.Index;
             FormStoresModificar tienda = new FormStoresModificar(
-                client,
+                cliente,
                 Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value),
                 dataGridView1.Rows[i].Cells[1].Value.ToString(),
                 dataGridView1.Rows[i].Cells[2].Value.ToString(),
@@ -121,7 +121,7 @@ namespace Chat
                     string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
                     if (!string.IsNullOrEmpty(mensaje))
                     {
-                        client.SendMessage(mensaje);
+                        cliente.EnviarMensaje(mensaje);
                     }
                 }
                 else

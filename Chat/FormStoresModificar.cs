@@ -14,30 +14,20 @@ namespace Chat
 {
     public partial class FormStoresModificar : Form
     {
-        WebSocketClientManager client;
+        WebSocketClientManager cliente;
         bool bandera = false;
         int id = 0;
         public FormStoresModificar(WebSocketClientManager client)
         {
             InitializeComponent();
-            this.client = client;
+            this.cliente = client;
         }
 
-        //private void ClientManager_OnMessageReceived(string message)
-        //{
-        //    if (InvokeRequired)
-        //    {
-        //        Invoke(new Action(() => ClientManager_OnMessageReceived(message)));
-                
-        //        return;
-        //    }
-        //    FormStoresTabla froma =new FormStoresTabla();
-        //    froma.actualizar();
-        //}
+       
         public FormStoresModificar(WebSocketClientManager client, int id, string nombre, string direccion, string ciudad, string estado, string cp)//actualizar
         {
             InitializeComponent();
-            this.client = client;
+            this.cliente = client;
             this.id = id;
             textBoxID.Text = id.ToString();
             textBoxID.ReadOnly = true;
@@ -83,7 +73,7 @@ namespace Chat
                     string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
                     if (!string.IsNullOrEmpty(mensaje))
                     {
-                        client.SendMessage(mensaje);
+                        cliente.EnviarMensaje(mensaje);
                     }
                 }
                 catch (Exception ex)
@@ -106,8 +96,10 @@ namespace Chat
                     string mensaje = "SE HAN REALIZADO ACTUALIZACIONES A LA BASE DE DATOS".Trim();
                     if (!string.IsNullOrEmpty(mensaje))
                     {
-                        client.SendMessage(mensaje);
+                        cliente.EnviarMensaje(mensaje);
                     }
+                    FormStoresTabla tablas = new FormStoresTabla();
+                    tablas.actualizar();
                 }
                 catch (Exception ex)
                 {

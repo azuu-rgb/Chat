@@ -45,6 +45,7 @@
             label6 = new Label();
             buttonCANCELAR = new Button();
             label7 = new Label();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -189,12 +190,24 @@
             label7.TabIndex = 15;
             label7.Text = "                                      \r\n\r\n\r\n\r\n\r\n\r\n\r\n";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI Black", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.MidnightBlue;
+            label8.Location = new Point(38, 28);
+            label8.Name = "label8";
+            label8.Size = new Size(279, 65);
+            label8.TabIndex = 16;
+            label8.Text = "-Modificar";
+            // 
             // FormStoresModificar
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(642, 464);
+            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(buttonCANCELAR);
             Controls.Add(textBoxCIUDAD);
@@ -236,5 +249,6 @@
         private Label label6;
         private Button buttonCANCELAR;
         private Label label7;
+        private Label label8;
     }
 }

@@ -4,43 +4,43 @@ using System.Collections.Generic;
 
 public class WebSocketServerManager
 {
-    private WebSocketServer server;
-    private List<IWebSocketConnection> allSockets;
+    private WebSocketServer servidor;
+    private List<IWebSocketConnection> sockets;
 
     public Action<string> OnMessageReceived;
 
-    public void StartServer(string address = "ws://0.0.0.0:8181")
+    public void IniciarServidor(string address = "ws://0.0.0.0:8181")
     {
-        allSockets = new List<IWebSocketConnection>();
-        server = new WebSocketServer(address);
+        sockets = new List<IWebSocketConnection>();
+        servidor = new WebSocketServer(address);
 
-        server.Start(socket =>
+        servidor.Start(socket =>
         {
             socket.OnOpen = () =>
             {
                 Console.WriteLine("Cliente conectado!");
-                allSockets.Add(socket);
+                sockets.Add(socket);
             };
 
             socket.OnClose = () =>
             {
                 Console.WriteLine("Cliente desconectado.");
-                allSockets.Remove(socket);
+                sockets.Remove(socket);
             };
 
             socket.OnMessage = message =>
             {
                 Console.WriteLine("Mensaje recibido del cliente: " + message);
-                OnMessageReceived?.Invoke(message); // Llama al formulario
+                OnMessageReceived?.Invoke(message); 
             };
         });
 
         Console.WriteLine("Servidor WebSocket iniciado en " + address);
     }
 
-    public void SendMessageToAll(string message)
+    public void EnviarMensaje(string message)
     {
-        foreach (var socket in allSockets)
+        foreach (var socket in sockets)
         {
             socket.Send(message);
         }

@@ -121,7 +121,7 @@
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAzZJREFUaEPtmbluFEEQhi2ugJAj4ngLELwDt4RA8CBGPIA5RAYIkE8IjcAG2yQE
+        DwAACw8BkvkDpQAAAzZJREFUaEPtmbluFEEQhi2ugJAj4ngLELwDt4RA8CBGPIA5RAYIkE8IjcAG2yQE
         lgi2q9YjJLxLBgHr6TYCTGxIBv2z3pWo7pntmelZCPaXPsnena7+p91HdXlsbKSRRqqs+WR+N8d8mjTd
         JE0vlOaPZPin0vQb7PzcxnfpM1/pVJIku2ScoasZN4+RodtkOCbDSRGU4Q0ydIs26KiMW7vemfeHyfAT
         ZeiXNFYUxFCaHkU6OiT7qUWs+RoZ3pJGqqIM/VCxuir7C6YoifaSoUnZcWiU5sfoS/ZfSZGO9pOmN7Kz
@@ -141,7 +141,7 @@
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAA5pJREFUaEPt1k1PE0EcBvDljIkXLh4U+kJboC20XpRvYLxISPwKYryYGIH2YL35
+        DwAACw8BkvkDpQAAA5pJREFUaEPt1k1PE0EcBvDljIkXLh4U+kJboC20XpRvYLxISPwKYryYGIH2YL35
         CcR7sVBKW0tpgUp7kzOYKCyIidq37XbbGvFIHDM7HVimu3Q7O+WgfZIngQRmfp1Md/8c10svvfznmdu9
         3ze7V+ib3QMd9flunpv9eI9c7soDIS043d39Qa7X/QQ+XePmD25zPv4h5+efcvOfATe/DzjfAeD8sHyz
         hxo/H6C/9e0D+X/hGnAtuOazvX5yO2OZ+3qd8x9Nc/7DV5yfz3B+/jvCdKv8H853+A3tBfc8mpYN1PHx
@@ -162,7 +162,7 @@
   <data name="buttonCANCELAR.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAA/JJREFUWEfdWEtPE1EYJdGd+jN8RI3u3ZB27gNQYwKUxEcE/wBFKK6AymPDghH+
+        DwAACw8BkvkDpQAAA/JJREFUWEfdWEtPE1EYJdGd+jN8RI3u3ZB27gNQYwKUxEcE/wBFKK6AymPDghH+
         hnvj0g3YO2VjiVRqomJN2CiQMFNYWHLNGcoA35TpLbRKPMlJJjPfvd/J3Mf3aGn5X6FisdsZxoYW29re
         OlKuKs5LGcsqg3h22tq+4VuG80HY0vFNwfydO5cU5y8cIX4sdnS4hWfPdtZSKb0xPq696Wm9PTPjE894
         tzY8rAt9fduwVVIWFWOpd62tF+m8p8a71tbzSoiUw7mbf/y49Gt0VO+8emVO29YYk3/0yFOcu/jzmJP6
